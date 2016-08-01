@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue's data</title>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<div id="app">
+    <p>this vue content:</p>
+    <p>
+        Hello {{name}}
+        <br>
+        number is {{num}}
+    </p>
+</div>
+<div>
+    <p>this is $data string:</p>
+    <p id="$dataString"></p>
+</div>
+<div>
+    <button onclick="add()">+</button>
+    <button onclick="reduce()">-</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                name: 'world',
+                num: 0
+            }
+        }
+    });
+    document.getElementById('$dataString').innerHTML = JSON.stringify(vm.$data);
+    function reduce() {
+        vm.num -= 10;
+        document.getElementById('$dataString').innerHTML = JSON.stringify(vm.$data);
+    }
+    function add() {
+        vm.num += 10;
+        document.getElementById('$dataString').innerHTML = JSON.stringify(vm.$data);
+    }
+</script>
+</body>
+</html>
