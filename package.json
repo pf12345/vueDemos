@@ -13,5 +13,8 @@
     "vue-loader": "8.2.1",
     "webpack": "1.12.13",
     "webpack-dev-server": "1.14.1"
+  },
+  "scripts": {
+    "searchDemo": "cd component/search && webpack-dev-server --inline --hot --config webpack.search.config.js"
   }
 }

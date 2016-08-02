@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue';
 
-import BaseSeach from './components/base-search.vue'; //基本搜索控件
+import BaseSeach from '../components/base-search.vue'; //基本搜索控件
 new Vue({
     el: '#app',
     components: {
