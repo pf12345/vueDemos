@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue's events</title>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<div id="app">
+    <p>vue click =></p>
+    <p>
+        number is {{num}}
+    </p>
+	<div>
+		<button v-on:click="add()">+</button>
+		<button v-on:click="reduce()">-</button>
+	</div>
+	<div>
+		<p>vue enter =></p>
+		<p>
+			message: {{message}}
+		</p>
+		<p>keyup.enter: <input type="text" v-on:keyup.enter="sendMessage" v-model="inp1"/></p>
+		<p>keyup.13: <input type="text" v-on:keyup.13="sendMessage" v-model="inp1"/></p>
+		<p>space: <input type="text" v-on:keyup.space="sendMessage" v-model="inp1"/></p>
+		<p>delete: <input type="text" v-on:keyup.delete="clearMessage" v-model="inp1"/></p>
+	</div>
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                message: '',
+                num: 0,
+				inp1: ''
+            }
+        },
+		methods: {
+			reduce: function() {
+				this.num -= 10;
+			},
+			add: function() {
+				this.num += 10;
+			},
+			sendMessage: function() {
+				this.message = this.inp1;			
+			},
+			clearMessage: function() {
+				this.message = '';
+			}
+		}
+    });
+</script>
+</body>
+</html>
