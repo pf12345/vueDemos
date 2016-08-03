@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>responsive</title>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<div id="app">
+    开始添加属性:
+    <p>
+        number1: {{number1}}
+    </p>
+    初始化后添加属性:
+    <p>
+        number2: {{number2}}
+    </p>
+
+    初始化后使用$set添加属性:
+    <p>
+        number3: {{number3}}
+    </p>
+    <p>
+        <button @click="addNum1">+number1</button>
+        <button @click="addNum2">+number2</button>
+        <button @click="addNum3">+number3</button>
+    </p>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            number1: 0
+        },
+        methods: {
+            addNum1: function () {
+                vm.number1 += 10;
+            },
+            addNum2: function () {
+                vm.number2 += 10;
+            },
+            addNum3: function () {
+                vm.number3 += 10;
+            }
+        }
+    });
+    vm.number2 = 2;
+    vm.$set('number3', 3);
+</script>
+</body>
+</html>
