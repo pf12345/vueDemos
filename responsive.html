@@ -8,7 +8,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <div id="app">
     开始添加属性:
-    <p>
+    <p id="num1">
         number1: {{number1}}
     </p>
     初始化后添加属性:
@@ -35,6 +35,10 @@
         methods: {
             addNum1: function () {
                 vm.number1 += 10;
+                alert(document.getElementById('num1').innerHTML);
+                Vue.nextTick(function () {
+                    alert(document.getElementById('num1').innerHTML);
+                });
             },
             addNum2: function () {
                 vm.number2 += 10;

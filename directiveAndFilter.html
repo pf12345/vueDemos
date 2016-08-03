@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>directive and filter</title>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<div id="app">
+    <p v-red>this is red directive</p>
+    <p v-green>this is green directive</p>
+    <p>toUpperCase filter: this is test => {{"this is test" | to-upper-case}}</p>
+    <p>toUpperCase and 6 filter: this is test => {{"this is test" | to-upper-case 6}}</p>
+    <p>reverse filter: this is test => {{"this is test" | reverse}}</p>
+    <div>
+        input filter:
+        <p><input type="text" v-model="userInput"></p>
+        <p>toUpperCase and {{userInput}} filter: this is test => {{"this is test" | to-upper-case userInput}}</p>
+    </div>
+</div>
+<script>
+    //这个必须在初始化vue实例之前
+    Vue.directive('green', {
+        bind: function () {
+            this.el.setAttribute("style", "background:green;");
+        }
+    });
+    Vue.filter('toUpperCase', function (value, num) {
+        if (num && value != '') {
+            return value.slice(0, num).toUpperCase();
+        }
+        return value.toUpperCase();
+    });
+    new Vue({
+        el: '#app',
+        userInput: 0,
+        directives: {
+            red: {
+                bind: function () {
+                    this.el.setAttribute("style", "background:red;");
+                }
+            }
+        },
+        filters: {
+            reverse: function(value) {
+                if(value) {
+                    return value.split('').reverse().join('');
+                }
+                return value;
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
