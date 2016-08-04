@@ -5,5 +5,7 @@
 
 
 export default {
-    count: 10
+    counterModel: {
+        count: 10
+    }
 };
