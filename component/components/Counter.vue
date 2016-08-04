@@ -14,7 +14,7 @@
 
     export default {
         data: function () {
-            return store;
+            return store.counterModel;
         },
         methods: {
             increment: function () {

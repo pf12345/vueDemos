@@ -4,14 +4,23 @@
  */
 
 import * as types from './mutation-types';
-import store from './store';
+import * as setters from './setters';
+import * as getters from './getters';
 
 export const counterEvents = {
    [types.INCREMENT]: function () {
-       store.count += 1;
+       let count = getters.getCounterModelValue({key: 'count'});
+       count += 1;
+       setters.counterModelSetters.setValue({
+           count: count
+       });
    },
     [types.DECREMENT]: function () {
-        store.count -= 1;
+        let count = getters.getCounterModelValue({key: 'count'});
+        count -= 1;
+        setters.counterModelSetters.setValue({
+           count: count
+       });
     }
 };
 

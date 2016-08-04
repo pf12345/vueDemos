@@ -8,21 +8,10 @@
  * @param uid
  * @returns {*}
  */
-export const getUserInfo = (uid) => {
-    if(uid && orgUtil && orgUtil.getUserInfo && orgUtil.getUserInfo(uid)) {
-        return orgUtil.getUserInfo(uid);
+export const toUpperCase = (value) => {
+    if(value){
+        return value.toUpperCase();
     }
-    return null;
+    return value;
 };
 
-/**
- * 获取用户用户名
- * @param uid
- * @returns {*}
- */
-export const getUserNickname = (uid)=> {
-    if(getUserInfo(uid)) {
-        return getUserInfo(uid).nickname;
-    }
-    return '';
-};
